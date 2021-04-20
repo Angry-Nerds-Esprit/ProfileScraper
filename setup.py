@@ -31,6 +31,7 @@ setup(name='scrape_linkedin',
           'bs4',
           'selenium',
           'click',
-          'joblib'
+          'joblib',
+          'flask'
       ]
       )

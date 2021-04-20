@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.expected_conditions import _find_element
 
 options = Options()
-options.add_argument('--headless')
+#options.add_argument('--headless')
 HEADLESS_OPTIONS = {'chrome_options': options}
 
 
