@@ -37,7 +37,11 @@ class api :
         self.cookie=None
         self.islogedin=False
     
-    def api(self):    
+    def start(self):
+        self.api(parameters.linkedin_username,parameters.linkedin_password)
+    def start(self):
+        self.api(parameters.linkedin_username,parameters.linkedin_password)
+    def api(self,myUserNmae,myPassowrd):    
         if 'query' in request.args:
             query = str(request.args['query'])
             print(query)
@@ -66,7 +70,7 @@ class api :
 
         # locate email form by_class_name
         if not self.islogedin :
-            self.linkedinLogin()
+            self.linkedinLogin(myUserNmae,myPassowrd)
     
         self.generateListe(query)
         
@@ -90,18 +94,18 @@ class api :
         return data
 
 
-    def linkedinLogin(self):
+    def linkedinLogin(self,myUserName, myPassword):
         username = self.driver.find_element_by_id('session_key')
     
 
         # send_keys() to simulate key strokes
-        username.send_keys(parameters.linkedin_username)
+        username.send_keys(myUserName)
         sleep(0.5)
         # locate password form by_class_name
         password = self.driver.find_element_by_id('session_password')
 
         # send_keys() to simulate key strokes
-        password.send_keys(parameters.linkedin_password)
+        password.send_keys(myPassword)
         sleep(0.5)
 
         # locate submit button by_class_name
@@ -203,9 +207,21 @@ apiinstence= api()
 @app.route('/', methods=['POST'])
 def start():
     print('start')
-    return apiinstence.api() 
+    return apiinstence.start()
       
+@app.route('/changeAccount', methods=['POST'])
+def startWithChangingAccount():
+    request_data = request.get_json()
+    if 'username' in request_data:
+            username = str(request_data['username'])
+            print(username)
+    else:
+        return "Error: No id field provided. Please specify an username."
 
+    if 'passowrd' in request_data:
+        passowrd = str(request_data['passowrd'])
+        print(passowrd)
+    return apiinstence.api(username,passowrd) 
 
 start
 app.run(port=5001)
