@@ -5,5 +5,13 @@ search_query = 'site:linkedin.com/in/ AND "python developer" AND "London"'
 file_name = 'results_file.csv'
 
 # login credentials
-linkedin_username = 'fomolav993@ffuqzt.com'
-linkedin_password = '3aslema123'
+linkedin_username = 'jafari5110@to200.com'
+linkedin_password = '123321sof'
+
+#compte 1 
+#mail : jafari5110@to200.com
+#mdp : 123321sof
+
+#compte 2 : 
+#mail : jomagip168@o3live.com
+#mdp : 321123sof
